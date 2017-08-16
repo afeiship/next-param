@@ -11,7 +11,7 @@
     for (key in inObj) {
       value = inObj[key];
       if (value != null) {
-        encodeValue = nx.isArray(value) ? value.join() : value;
+        encodeValue = Array.isArray(value) ? value.join() : value;
         arr.push(encodeURIComponent(key) + CHAR_EQUAL + encodeURIComponent(encodeValue));
       }
     }
