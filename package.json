@@ -1,6 +1,6 @@
 {
   "name": "next-param",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Param based on next.",
   "homepage": "https://github.com/afeiship/next-param",
   "author": {
@@ -23,5 +23,8 @@
     "gulp-uglify": "^2.1.2",
     "mocha": "^3.5.0",
     "yargs": "^4.7.1"
+  },
+  "dependencies": {
+    "next-js-core2": "github:afeiship/next-js-core2"
   }
 }

@@ -1,8 +1,19 @@
 # next-param
 > Param based on next.
 
+## install:
+```bash
+npm i -S afeiship/next-param --registry=https://registry.npm.taobao.org
+```
 
-## resources:
+## usage:
+```js
+import 'next-param';
 
-## todos:
-- [ ] unit test case
+nx.param({
+  var1: 123,
+  var2: 'str'
+});
+
+// var1=123&var2=str
+```
