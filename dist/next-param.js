@@ -1,6 +1,15 @@
+/*!
+ * name: @feizheng/next-param
+ * url: https://github.com/afeiship/next-param
+ * version: 1.0.0
+ * date: 2019-11-25T07:46:14.791Z
+ * license: MIT
+ */
+
 (function() {
   var global = global || this || window || Function('return this')();
-  var nx = global.nx || require('next-js-core2');
+  var nx = global.nx || require('@feizheng/next-js-core2');
+
   var CHAR_AND = '&';
   var CHAR_EQ = '=';
   var returnValue = function(inKey, inValue) {
@@ -25,3 +34,5 @@
     module.exports = nx.param;
   }
 })();
+
+//# sourceMappingURL=next-param.js.map
