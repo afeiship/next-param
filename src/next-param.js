@@ -8,10 +8,11 @@
     return encodeURIComponent(inKey) + CHAR_EQ + encodeURIComponent(inValue);
   };
 
-  nx.param = function(inObj, inCallback) {
+  nx.param = function(inObj, inUrl, inCallback) {
     var callback = inCallback || returnValue;
     var arr = [];
     var key, value, encodeValue;
+    var result;
     for (key in inObj) {
       value = inObj[key];
       if (value != null) {
@@ -19,7 +20,17 @@
         arr.push(callback(key, encodeValue));
       }
     }
-    return arr.join(CHAR_AND);
+
+    result = arr.join(CHAR_AND);
+
+    if (inUrl) {
+      if (result) {
+        return inUrl + '?' + result;
+      } else {
+        return inUrl;
+      }
+    }
+    return result;
   };
 
   if (typeof module !== 'undefined' && module.exports) {

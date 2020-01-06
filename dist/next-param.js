@@ -2,7 +2,7 @@
  * name: @feizheng/next-param
  * url: https://github.com/afeiship/next-param
  * version: 1.0.0
- * date: 2019-11-25T07:46:14.791Z
+ * date: 2020-01-06T07:43:12.220Z
  * license: MIT
  */
 
@@ -16,7 +16,7 @@
     return encodeURIComponent(inKey) + CHAR_EQ + encodeURIComponent(inValue);
   };
 
-  nx.param = function(inObj, inCallback) {
+  nx.param = function(inObj, inUrl, inCallback) {
     var callback = inCallback || returnValue;
     var arr = [];
     var key, value, encodeValue;
@@ -27,7 +27,16 @@
         arr.push(callback(key, encodeValue));
       }
     }
-    return arr.join(CHAR_AND);
+    var result = arr.join(CHAR_AND);
+
+    if (inUrl) {
+      if (result) {
+        return inUrl + '?' + result;
+      } else {
+        return inUrl;
+      }
+    }
+    return result;
   };
 
   if (typeof module !== 'undefined' && module.exports) {
