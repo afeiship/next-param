@@ -1,8 +1,8 @@
 /*!
  * name: @feizheng/next-param
  * url: https://github.com/afeiship/next-param
- * version: 1.0.0
- * date: 2020-01-06T07:43:12.220Z
+ * version: 1.1.2
+ * date: 2020-06-10T01:31:11.189Z
  * license: MIT
  */
 
@@ -20,6 +20,7 @@
     var callback = inCallback || returnValue;
     var arr = [];
     var key, value, encodeValue;
+    var result;
     for (key in inObj) {
       value = inObj[key];
       if (value != null) {
@@ -27,7 +28,8 @@
         arr.push(callback(key, encodeValue));
       }
     }
-    var result = arr.join(CHAR_AND);
+
+    result = arr.join(CHAR_AND);
 
     if (inUrl) {
       if (result) {
