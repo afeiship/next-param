@@ -1,36 +1,29 @@
-(function() {
+(function () {
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('@feizheng/next-js-core2');
 
   var CHAR_AND = '&';
   var CHAR_EQ = '=';
-  var returnValue = function(inKey, inValue) {
+  var CHAR_Q = '?';
+  var RETURN_VALUE = function (inKey, inValue) {
     return encodeURIComponent(inKey) + CHAR_EQ + encodeURIComponent(inValue);
   };
 
-  nx.param = function(inObj, inUrl, inCallback) {
-    var callback = inCallback || returnValue;
+  nx.param = function (inObj, inUrl, inCallback) {
+    var callback = inCallback || RETURN_VALUE;
     var arr = [];
-    var key, value, encodeValue;
     var result;
-    for (key in inObj) {
-      value = inObj[key];
+
+    nx.forIn(inObj, function (key, value) {
       if (value != null) {
-        encodeValue = Array.isArray(value) ? value.join() : value;
+        var encodeValue = Array.isArray(value) ? value.join() : value;
         arr.push(callback(key, encodeValue));
       }
-    }
+    })
 
     result = arr.join(CHAR_AND);
-
-    if (inUrl) {
-      if (result) {
-        return inUrl + '?' + result;
-      } else {
-        return inUrl;
-      }
-    }
-    return result;
+    if (!inUrl) return result;
+    return !result ? inUrl : (inUrl + CHAR_Q + result);
   };
 
   if (typeof module !== 'undefined' && module.exports) {
