@@ -6,3 +6,14 @@ test
 src
 build
 gulpfile.js
+
+__tests__
+.vscode
+.history
+
+express.js
+jest.config.js
+Gemfile
+Rakefile
+.prettierrc
+.editorconfig

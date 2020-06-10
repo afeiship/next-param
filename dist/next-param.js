@@ -1,8 +1,8 @@
 /*!
  * name: @feizheng/next-param
  * url: https://github.com/afeiship/next-param
- * version: 1.1.2
- * date: 2020-06-10T01:31:11.189Z
+ * version: 1.1.3
+ * date: 2020-06-10T01:32:52.823Z
  * license: MIT
  */
 
