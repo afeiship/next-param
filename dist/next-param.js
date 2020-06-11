@@ -1,31 +1,35 @@
 /*!
  * name: @feizheng/next-param
  * url: https://github.com/afeiship/next-param
- * version: 1.1.4
- * date: 2020-06-10T01:38:35.118Z
+ * version: 2.0.0
+ * date: 2020-06-11T00:12:25.994Z
  * license: MIT
  */
 
 (function () {
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('@feizheng/next-js-core2');
-
   var CHAR_AND = '&';
   var CHAR_EQ = '=';
   var CHAR_Q = '?';
-  var RETURN_VALUE = function (inKey, inValue) {
-    return encodeURIComponent(inKey) + CHAR_EQ + encodeURIComponent(inValue);
+  var DEFAULT_OPTIONS = {
+    joinKey: ',',
+    encode: encodeURIComponent,
+    isEmpty: function (value) { return value != null; },
+    transform: function (key, value) {
+      return this.encode(key) + CHAR_EQ + this.encode(value);
+    }
   };
 
-  nx.param = function (inObj, inUrl, inCallback) {
-    var callback = inCallback || RETURN_VALUE;
+  nx.param = function (inObj, inUrl, inOptions) {
+    var options = nx.mix(null, DEFAULT_OPTIONS, inOptions);
     var arr = [];
     var result;
 
     nx.forIn(inObj, function (key, value) {
-      if (value != null) {
-        var encodeValue = Array.isArray(value) ? value.join() : value;
-        arr.push(callback(key, encodeValue));
+      if (options.isEmpty(value)) {
+        var joinedValue = Array.isArray(value) ? value.join(options.joinKey) : value;
+        arr.push(options.transform(key, joinedValue));
       }
     })
 
