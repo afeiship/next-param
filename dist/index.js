@@ -3,7 +3,7 @@
  * description: Parse and stringify URL query strings for next.
  * homepage: https://github.com/afeiship/next-param
  * version: 1.0.0
- * date: 2020-11-19 13:24:01
+ * date: 2020-11-19 13:25:59
  * license: MIT
  */
 

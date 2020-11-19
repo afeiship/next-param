@@ -36,5 +36,13 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
-  }
+  },
+  "keywords": [
+    "next",
+    "param",
+    "qs",
+    "query",
+    "query-string",
+    "params"
+  ]
 }
