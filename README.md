@@ -1,9 +1,14 @@
 # next-param
-> Param based on next.
+> Parse and stringify URL query strings for next.
+
+[![version][version-image]][version-url]
+[![license][license-image]][license-url]
+[![size][size-image]][size-url]
+[![download][download-image]][download-url]
 
 ## installation
 ```bash
-npm install -S @feizheng/next-param
+npm install -S @jswork/next-param
 ```
 
 ## apis
@@ -29,3 +34,18 @@ import '@feizheng/next-param';
 nx.param({ var1: 123, var2: 'str', ids: [1,2,3] });
 // var1=123&var2=str&ids=1%2C2%2C3
 ```
+
+## license
+Code released under [the MIT license](https://github.com/afeiship/next-param/blob/master/LICENSE.txt).
+
+[version-image]: https://img.shields.io/npm/v/@jswork/next-param
+[version-url]: https://npmjs.org/package/@jswork/next-param
+
+[license-image]: https://img.shields.io/npm/l/@jswork/next-param
+[license-url]: https://github.com/afeiship/next-param/blob/master/LICENSE.txt
+
+[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/next-param
+[size-url]: https://github.com/afeiship/next-param/blob/master/dist/next-param.min.js
+
+[download-image]: https://img.shields.io/npm/dm/@jswork/next-param
+[download-url]: https://www.npmjs.com/package/@jswork/next-param

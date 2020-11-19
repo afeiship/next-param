@@ -1,14 +1,6 @@
-/*!
- * name: @feizheng/next-param
- * url: https://github.com/afeiship/next-param
- * version: 2.0.0
- * date: 2020-06-11T00:12:25.994Z
- * license: MIT
- */
-
 (function () {
   var global = global || this || window || Function('return this')();
-  var nx = global.nx || require('@feizheng/next-js-core2');
+  var nx = global.nx || require('@jswork/next');
   var CHAR_AND = '&';
   var CHAR_EQ = '=';
   var CHAR_Q = '?';
@@ -38,9 +30,8 @@
     return !result ? inUrl : (inUrl + CHAR_Q + result);
   };
 
+
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = nx.param;
   }
 })();
-
-//# sourceMappingURL=next-param.js.map
