@@ -29,7 +29,7 @@ npm install -S @jswork/next-param
 
 ## usage
 ```js
-import '@feizheng/next-param';
+import '@jswork/next-param';
 
 nx.param({ var1: 123, var2: 'str', ids: [1,2,3] });
 // var1=123&var2=str&ids=1%2C2%2C3
