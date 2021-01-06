@@ -1,5 +1,5 @@
 (function () {
-  var global = global || this || window || Function('return this')();
+  var global = global || window || Function('return this')();
   var nx = global.nx || require('@jswork/next');
   var CHAR_AND = '&';
   var CHAR_EQ = '=';
