@@ -2,13 +2,13 @@
  * name: @jswork/next-param
  * description: Parse and stringify URL query strings for next.
  * homepage: https://github.com/afeiship/next-param
- * version: 1.0.0
- * date: 2020-11-19 13:25:59
+ * version: 1.0.1
+ * date: 2021-01-06 22:31:18
  * license: MIT
  */
 
 (function () {
-  var global = global || this || window || Function('return this')();
+  var global = global || window || Function('return this')();
   var nx = global.nx || require('@jswork/next');
   var CHAR_AND = '&';
   var CHAR_EQ = '=';
