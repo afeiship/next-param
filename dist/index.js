@@ -2,8 +2,8 @@
  * name: @jswork/next-param
  * description: Parse and stringify URL query strings for next.
  * homepage: https://github.com/afeiship/next-param
- * version: 1.0.1
- * date: 2021-01-06 22:31:18
+ * version: 1.0.2
+ * date: 2021-01-09 16:08:26
  * license: MIT
  */
 

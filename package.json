@@ -1,6 +1,6 @@
 {
   "name": "@jswork/next-param",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Parse and stringify URL query strings for next.",
   "homepage": "https://github.com/afeiship/next-param",
   "author": {
