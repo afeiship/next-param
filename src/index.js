@@ -7,7 +7,7 @@
   var DEFAULT_OPTIONS = {
     joinKey: ',',
     encode: encodeURIComponent,
-    isEmpty: function (value) { return value != null; },
+    isEmpty: function (value) { return value == null; },
     transform: function (key, value) {
       return this.encode(key) + CHAR_EQ + this.encode(value);
     }
@@ -19,7 +19,7 @@
     var result;
 
     nx.forIn(inObj, function (key, value) {
-      if (options.isEmpty(value)) {
+      if (!options.isEmpty(value)) {
         var joinedValue = Array.isArray(value) ? value.join(options.joinKey) : value;
         arr.push(options.transform(key, joinedValue));
       }

@@ -19,12 +19,12 @@ npm install -S @jswork/next-param
 | options | object | 其它选项       |
 
 ## options
-| name      | type     | description                                                          |
-| --------- | -------- | -------------------------------------------------------------------- |
-| joinKey   | string   | 当参数值为 `array` 的时候， `join` 的连接字符                        |
-| encode    | function | `encodeURI` 或者 `encodeURIComponent` ，或者自定义                   |
-| isEmpty   | function | 过渡掉不需要的 `value` ，可以用这个函数；默认过滤掉 `null/undefined` |
-| transform | function | 对每一组 `key/value` 进行处理，最终返回需要用 `&` 拼接的字符串       |
+| name       | type     | description                                                          |
+| ---------- | -------- | -------------------------------------------------------------------- |
+| joinKey    | string   | 当参数值为 `array` 的时候， `join` 的连接字符                        |
+| encode     | function | `encodeURI` 或者 `encodeURIComponent` ，或者自定义                   |
+| isNotEmpty | function | 过渡掉不需要的 `value` ，可以用这个函数；默认过滤掉 `null/undefined` |
+| transform  | function | 对每一组 `key/value` 进行处理，最终返回需要用 `&` 拼接的字符串       |
 
 
 ## usage
