@@ -2,8 +2,8 @@
  * name: @jswork/next-param
  * description: Parse and stringify URL query strings for next.
  * homepage: https://github.com/afeiship/next-param
- * version: 1.0.2
- * date: 2021-01-09 16:08:26
+ * version: 1.0.3
+ * date: 2021-09-07 21:37:25
  * license: MIT
  */
 
@@ -16,7 +16,7 @@
   var DEFAULT_OPTIONS = {
     joinKey: ',',
     encode: encodeURIComponent,
-    isEmpty: function (value) { return value != null; },
+    isEmpty: function (value) { return value == null; },
     transform: function (key, value) {
       return this.encode(key) + CHAR_EQ + this.encode(value);
     }
@@ -28,7 +28,7 @@
     var result;
 
     nx.forIn(inObj, function (key, value) {
-      if (options.isEmpty(value)) {
+      if (!options.isEmpty(value)) {
         var joinedValue = Array.isArray(value) ? value.join(options.joinKey) : value;
         arr.push(options.transform(key, joinedValue));
       }
