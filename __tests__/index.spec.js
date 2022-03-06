@@ -34,11 +34,25 @@
         name: 'order001'
       };
       var url = 'https://www.baidu.com';
-      var res1 = nx.param(params, url, { joinKey: ',', encode: encodeURI, });
+      var res1 = nx.param(params, url, { joinKey: ',', encode: encodeURI });
       var res2 = nx.param(params, url, { joinKey: ',' });
 
       expect(res1).toBe('https://www.baidu.com?ids=1,2,3,4&name=order001');
       expect(res2).toBe('https://www.baidu.com?ids=1%2C2%2C3%2C4&name=order001');
+    });
+
+
+    test('nx.param with array params but api with ?', () => {
+      var params = {
+        ids: [1, 2, 3, 4],
+        name: 'order001'
+      };
+      var url = 'https://www.baidu.com/api.php?act=search';
+      var res1 = nx.param(params, url, { joinKey: ',', encode: encodeURI });
+      var res2 = nx.param(params, url, { joinKey: ',' });
+
+      expect(res1).toBe('https://www.baidu.com/api.php?act=search&ids=1,2,3,4&name=order001');
+      expect(res2).toBe('https://www.baidu.com/api.php?act=search&ids=1%2C2%2C3%2C4&name=order001');
     });
   });
 })();
