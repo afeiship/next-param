@@ -4,8 +4,8 @@
   var CHAR_AND = '&';
   var CHAR_EQ = '=';
   var CHAR_Q = '?';
-  var DEFAULT_OPTIONS = {
-    joinKey: ',',
+  var defaults = {
+    separator: ',',
     encode: encodeURIComponent,
     isEmpty: function (value) {
       return value == null;
@@ -16,13 +16,13 @@
   };
 
   nx.param = function (inObj, inUrl, inOptions) {
-    var options = nx.mix(null, DEFAULT_OPTIONS, inOptions);
+    var options = nx.mix(null, defaults, inOptions);
     var arr = [];
     var result;
 
     nx.forIn(inObj, function (key, value) {
       if (!options.isEmpty(value)) {
-        var joinedValue = Array.isArray(value) ? value.join(options.joinKey) : value;
+        var joinedValue = Array.isArray(value) ? value.join(options.separator) : value;
         arr.push(options.transform(key, joinedValue));
       }
     });
