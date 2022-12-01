@@ -7,5 +7,5 @@ type ParamOptions = {
 }
 
 interface NxStatic {
-  param(obj: ParamObj, url: string, options: any): string;
+  param(obj: ParamObj, url?: string, options?: any): string;
 }
