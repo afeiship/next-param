@@ -1,40 +1,37 @@
-(function () {
-  var global = typeof window !== 'undefined' ? window : this || Function('return this')();
-  var nx = global.nx || require('@jswork/next');
-  var CHAR_AND = '&';
-  var CHAR_EQ = '=';
-  var CHAR_Q = '?';
-  var defaults = {
-    separator: ',',
-    encode: encodeURIComponent,
-    isEmpty: function (value) {
-      return value == null;
-    },
-    transform: function (key, value) {
-      return this.encode(key) + CHAR_EQ + this.encode(value);
-    }
-  };
+import nx from '@jswork/next';
 
-  nx.param = function (inObj, inUrl, inOptions) {
-    var options = nx.mix(null, defaults, inOptions);
-    var arr = [];
-    var result;
-
-    nx.forIn(inObj, function (key, value) {
-      if (!options.isEmpty(value)) {
-        var joinedValue = Array.isArray(value) ? value.join(options.separator) : value;
-        arr.push(options.transform(key, joinedValue));
-      }
-    });
-
-    result = arr.join(CHAR_AND);
-    if (!inUrl) return result;
-    if (!result) return inUrl;
-    if (inUrl.includes(CHAR_Q)) return inUrl + CHAR_AND + result;
-    return inUrl + CHAR_Q + result;
-  };
-
-  if (typeof module !== 'undefined' && module.exports) {
-    module.exports = nx.param;
+const defaults = {
+  separator: ',',
+  encode: encodeURIComponent,
+  isEmpty: function (value) {
+    return value == null;
+  },
+  transform: function (key, value) {
+    return this.encode(key) + '=' + this.encode(value);
   }
-})();
+};
+
+nx.param = function (inObj, inUrl, inOptions) {
+  const options = nx.mix(null, defaults, inOptions);
+  const arr = [];
+  let result;
+
+  nx.forIn(inObj, function (key, value) {
+    if (!options.isEmpty(value)) {
+      const joinedValue = Array.isArray(value) ? value.join(options.separator) : value;
+      arr.push(options.transform(key, joinedValue));
+    }
+  });
+
+  result = arr.join('&');
+  if (!inUrl) return result;
+  if (!result) return inUrl;
+  if (inUrl.includes('?')) return inUrl + '&' + result;
+  return inUrl + '?' + result;
+};
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = nx.param;
+}
+
+export default nx.param;
