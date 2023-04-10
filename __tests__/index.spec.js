@@ -1,6 +1,13 @@
 require('../src');
 
 describe('api.basic test', () => {
+  test.only('nx.param when input is null or {}', () => {
+    var rs1 = nx.param(null);
+    var rs2 = nx.param({});
+    expect(rs1).toBe('');
+    expect(rs2).toBe('');
+  });
+
   test('nx.param', function () {
     // assert.equal(-1, [1,2,3].indexOf(4));
     var rs1 = nx.param({ name: 'fei_!@$', age: 123 });

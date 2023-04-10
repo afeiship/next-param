@@ -12,6 +12,8 @@ const defaults = {
 };
 
 nx.param = function (inObj, inUrl, inOptions) {
+  if (!inObj) return '';
+
   const options = nx.mix(null, defaults, inOptions);
   const arr = [];
   let result;
