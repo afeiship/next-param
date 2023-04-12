@@ -1,7 +1,7 @@
 require('../src');
 
 describe('api.basic test', () => {
-  test.only('nx.param when input is null or {}', () => {
+  test('nx.param when input is null or {}', () => {
     var rs1 = nx.param(null);
     var rs2 = nx.param({});
     expect(rs1).toBe('');
@@ -58,5 +58,12 @@ describe('api.basic test', () => {
 
     expect(res1).toBe('https://www.baidu.com/api.php?act=search&ids=1,2,3,4&name=order001');
     expect(res2).toBe('https://www.baidu.com/api.php?act=search&ids=1%2C2%2C3%2C4&name=order001');
+  });
+
+  test('obj is null ,only url', () => {
+    const params = null;
+    const url = 'https://dev.com';
+    const res = nx.param(params, url);
+    expect(res).toBe('https://dev.com');
   });
 });
