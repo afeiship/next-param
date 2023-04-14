@@ -3,12 +3,8 @@ import nx from '@jswork/next';
 const defaults = {
   separator: ',',
   encode: encodeURIComponent,
-  isEmpty: function (value) {
-    return value == null;
-  },
-  transform: function (key, value) {
-    return this.encode(key) + '=' + this.encode(value);
-  }
+  isEmpty: (value) => value == null,
+  transform: nx.noop
 };
 
 nx.param = function (inObj, inUrl, inOptions) {
@@ -21,8 +17,14 @@ nx.param = function (inObj, inUrl, inOptions) {
 
   nx.forIn(inObj, function (key, value) {
     if (!options.isEmpty(value)) {
-      const joinedValue = Array.isArray(value) ? value.join(options.separator) : value;
-      arr.push(options.transform(key, joinedValue));
+      const isAry = Array.isArray(value);
+      const joined = isAry ? value.map(options.encode).join(options.separator) : value;
+      const hasTransform = options.transform !== nx.noop;
+      const suffix = isAry ? joined : options.encode(joined);
+      const transformed = hasTransform
+        ? options.transform(key, joined)
+        : options.encode(key) + '=' + suffix;
+      arr.push(transformed);
     }
   });
 

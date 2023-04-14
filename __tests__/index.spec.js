@@ -40,11 +40,9 @@ describe('api.basic test', () => {
       name: 'order001'
     };
     var url = 'https://www.baidu.com';
-    var res1 = nx.param(params, url, { separator: ',', encode: encodeURI });
-    var res2 = nx.param(params, url, { separator: ',' });
+    var res1 = nx.param(params, url, { separator: ',' });
 
     expect(res1).toBe('https://www.baidu.com?ids=1,2,3,4&name=order001');
-    expect(res2).toBe('https://www.baidu.com?ids=1%2C2%2C3%2C4&name=order001');
   });
 
   test('nx.param with array params but api with ?', () => {
@@ -53,11 +51,9 @@ describe('api.basic test', () => {
       name: 'order001'
     };
     var url = 'https://www.baidu.com/api.php?act=search';
-    var res1 = nx.param(params, url, { separator: ',', encode: encodeURI });
-    var res2 = nx.param(params, url, { separator: ',' });
+    var res1 = nx.param(params, url);
 
     expect(res1).toBe('https://www.baidu.com/api.php?act=search&ids=1,2,3,4&name=order001');
-    expect(res2).toBe('https://www.baidu.com/api.php?act=search&ids=1%2C2%2C3%2C4&name=order001');
   });
 
   test('obj is null ,only url', () => {
@@ -65,5 +61,13 @@ describe('api.basic test', () => {
     const url = 'https://dev.com';
     const res = nx.param(params, url);
     expect(res).toBe('https://dev.com');
+  });
+
+  test('special filters', () => {
+    const filters = {
+      f1: ['MGnify database', 'Zou, 2019']
+    };
+    const res = nx.param(filters, null);
+    expect(res).toBe('f1=MGnify%20database,Zou%2C%202019');
   });
 });
