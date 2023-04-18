@@ -70,4 +70,13 @@ describe('api.basic test', () => {
     const res = nx.param(filters, null);
     expect(res).toBe('f1=MGnify%20database,Zou%2C%202019');
   });
+
+  test('uri/uri2 encoder', () => {
+    const filters = { publications: 'Zou, 2019' };
+
+    const res1 = nx.param(filters, null, { encode: 'uri' });
+    const res2 = nx.param(filters, null, { encode: 'uri2' });
+    expect(res1).toBe('publications=Zou%2C%202019');
+    expect(res2).toBe('publications=Zou%252C%25202019');
+  });
 });

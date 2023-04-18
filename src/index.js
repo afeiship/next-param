@@ -1,8 +1,13 @@
 import nx from '@jswork/next';
 
+const ENCODE_HOOKS = {
+  uri: (v) => encodeURIComponent(v),
+  uri2: (v) => encodeURIComponent(encodeURIComponent(v))
+};
+
 const defaults = {
   separator: ',',
-  encode: encodeURIComponent,
+  encode: 'uri',
   isEmpty: (value) => value == null,
   transform: nx.noop
 };
@@ -17,13 +22,14 @@ nx.param = function (inObj, inUrl, inOptions) {
 
   nx.forIn(inObj, function (key, value) {
     if (!options.isEmpty(value)) {
+      const encoder = ENCODE_HOOKS[options.encode] || options.encode;
       const isAry = Array.isArray(value);
-      const joined = isAry ? value.map(options.encode).join(options.separator) : value;
+      const joined = isAry ? value.map(encoder).join(options.separator) : value;
       const hasTransform = options.transform !== nx.noop;
-      const suffix = isAry ? joined : options.encode(joined);
+      const suffix = isAry ? joined : encoder(joined);
       const transformed = hasTransform
         ? options.transform(key, joined)
-        : options.encode(key) + '=' + suffix;
+        : encoder(key) + '=' + suffix;
       arr.push(transformed);
     }
   });
