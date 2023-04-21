@@ -79,4 +79,10 @@ describe('api.basic test', () => {
     expect(res1).toBe('publications=Zou%2C%202019');
     expect(res2).toBe('publications=Zou%252C%25202019');
   });
+
+  test("base64 encoder",()=>{
+    const filters = { publications: 'Zou, 2019' };
+    const res = nx.param(filters, null, { encode: 'base64' });
+    expect(res).toBe('publications=Wm91LCAyMDE5');
+  })
 });

@@ -52,5 +52,8 @@
     "query-string",
     "params",
     "hash"
-  ]
+  ],
+  "dependencies": {
+    "js-base64": "^3.7.5"
+  }
 }

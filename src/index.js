@@ -1,8 +1,10 @@
 import nx from '@jswork/next';
+import { Base64 } from 'js-base64';
 
 const ENCODE_HOOKS = {
   uri: (v) => encodeURIComponent(v),
-  uri2: (v) => encodeURIComponent(encodeURIComponent(v))
+  uri2: (v) => encodeURIComponent(encodeURIComponent(v)),
+  base64: (v) => Base64.encode(v)
 };
 
 const defaults = {
@@ -27,9 +29,7 @@ nx.param = function (inObj, inUrl, inOptions) {
       const joined = isAry ? value.map(encoder).join(options.separator) : value;
       const hasTransform = options.transform !== nx.noop;
       const suffix = isAry ? joined : encoder(joined);
-      const transformed = hasTransform
-        ? options.transform(key, joined)
-        : encoder(key) + '=' + suffix;
+      const transformed = hasTransform ? options.transform(key, joined) : key + '=' + suffix;
       arr.push(transformed);
     }
   });

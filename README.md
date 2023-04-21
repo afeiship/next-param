@@ -26,6 +26,10 @@ npm install -S @jswork/next-param
 | isEmpty   | function | 过渡掉不需要的 `value` ，可以用这个函数；默认过滤掉 `null/undefined` |
 | transform | function | 对每一组 `key/value` 进行处理，最终返回需要用 `&` 拼接的字符串       |
 
+## encode
+- uri: 用 `encodeURIComponent` 对 value 进行 1次 `encode` 处理
+- uri2: 用 `encodeURIComponent` 对 value 进行 2次 `encode` 处理
+- base64: 对 value 用 `js-base64` 进行 `encode`
 
 ## usage
 ```js
